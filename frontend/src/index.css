@@ -1,0 +1,157 @@
+/* style.css content below — copie para src/style.css */
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding-top: 50px;
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+#form input,
+#form button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#form input:focus {
+  outline: none;
+  border-color: #6a82fb;
+  box-shadow: 0 0 5px rgba(106, 130, 251, 0.5);
+}
+
+#form button {
+  background: #6a82fb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#form button:hover {
+  background: #5a72e0;
+}
+
+#meses {
+  text-align: center;
+  margin: 20px;
+}
+
+#meses button {
+  margin: 5px;
+  padding: 10px 15px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#meses button:hover {
+  background: #6a82fb;
+  color: #fff;
+}
+#meses .ativo,
+#meses button.ativo {
+  background: #6a82fb;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(106, 130, 251, 0.25) inset;
+}
+
+#graficos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 60px;
+}
+
+.semana-container {
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 95%;
+  min-height: 320px;
+}
+
+.semana-container h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.error {
+  max-width: 500px;
+  margin: 10px auto;
+  background: rgba(255, 200, 200, 0.9);
+  color: #700;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #eaa;
+}
+
+/* Graph fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.skeleton {
+  position: relative;
+  padding: 10px 15px;
+  background-color: #ccc;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    #0a1d43 50%,
+    transparent 60%
+  );
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 1s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position-x: 0%;
+  }
+}
