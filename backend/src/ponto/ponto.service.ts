@@ -61,7 +61,7 @@ export class PontoService {
   private async coletarSemanas(page: puppeteer.Page) {
     let dias: { data: string; horas: number }[] = [];
 
-    // --- Voltar até não ter mais ---
+    // Voltar até não ter mais
     let temAnterior = true;
     while (temAnterior) {
       const diasPagina = await this.extrairDiasDeTrabalho(page);
@@ -82,31 +82,6 @@ export class PontoService {
           ),
         ]);
       } else temAnterior = false;
-    }
-
-    // --- Ir para frente até não ter mais ---
-    await page.goto("https://rh.zaffari.com.br/core/Ponto/Consulta");
-    await page.waitForSelector("td[label='Data']");
-    let temProximo = true;
-    while (temProximo) {
-      const diasPagina = await this.extrairDiasDeTrabalho(page);
-      dias = [...dias, ...diasPagina];
-
-      const linkProximo = await page.$('a[style*="float:right"]');
-      if (linkProximo) {
-        const antes = await page.$eval("td[label='Data']", el => el.textContent?.trim());
-        await Promise.all([
-          linkProximo.click(),
-          page.waitForFunction(
-            old => {
-              const el = document.querySelector("td[label='Data']");
-              return el && el.textContent?.trim() !== old;
-            },
-            {},
-            antes,
-          ),
-        ]);
-      } else temProximo = false;
     }
 
     return dias;
